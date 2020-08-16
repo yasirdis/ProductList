@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Registration</title>
+  </head>
+<body>
+  <nav class="navbar navbar-dark bg-dark">
+<!-- Navbar content -->
+<h1 class="text-white"><a href="{% url 'loginPage' %}" >User Registration Page</a></h1>
+</nav>
+  <div class="container mt-4">
+    <div class="alert alert-success" role="alert">
+      {{message}}
+    </div>
+    <form method="post" action="registerUser">
+      {% csrf_token  %}
+    <div class="form-row">
+      <div class="col-md-6 mb-3">
+        <label for="validationDefault01">First name</label>
+        <input type="text" class="form-control" id="validationDefault01" placeholder="First Name" name="fn" required>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="validationDefault02">Last name</label>
+        <input type="text" class="form-control" id="validationDefault02" placeholder="Last Name" name="ln" required>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-6 mb-3">
+        <label for="validationDefault03">email</label>
+        <input type="email" class="form-control" id="validationDefault03" placeholder="abc@gmail.com"  onfocusout="validateEmail()" name ="email" required>
+         <small id="emailHelp" class="form-text text-muted"></small>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="validationDefault04">Phone Number</label>
+        <input type="number" class="form-control" id="validationDefault04" name="ph" required>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-4 mb-3">
+        <label for="validationDefault05">User Name</label>
+          <input type="text" class="form-control" id="validationDefault05" name="un"  onfocusout="validateUn()"  required>
+           <small id="userNameHelp" class="form-text text-muted"></small>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label for="validationDefault06">Password</label>
+        <input type="password" class="form-control" id="validationDefault06" placeholder="Password" name="password" required>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label for="validationDefault07">Confirm Password</label>
+        <input type="password" class="form-control" id="validationDefault07" onfocusout="comparePassword()" placeholder="Enter Same Password again" name="cpassword" required>
+        <small id="cPasswordHelp" class="form-text text-muted"></small>
+      </div>
+
+    </div>
+
+    <button class="btn btn-primary" type="submit" id="submit" disabled>Submit form</button>
+  </form>
+  </div>
+
+  <script type="text/javascript" src="{% static 'js\validiateUser.js' %}">  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+</body>
+</html>

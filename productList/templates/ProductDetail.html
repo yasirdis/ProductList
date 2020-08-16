@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% extends "index.html" %}
+{% load static %}
+
+{% block content %}
+
+<nav class="navbar navbar-dark bg-dark">
+  <h1 class="text-white float-right"><a href="{% url 'index' %}">Product Detail Page</a></h1>
+  <a class="btn btn-primary float-right" href="{% url 'logout' %}" role="button">Logout</a>
+</nav>
+<div class="container">
+  <div class="jumbotron">
+    <div class="mx-auto d-block" style="max-width:30%;max-height:30%">
+      <img class="card-img-top mx-auto d-block" style="max-width:100%;max-height:100%"  src="{% static product.ImgSrc %}" alt="">
+    </div>
+
+
+    <div class="badge badge-primary text-wrap mt-2" style="width: 100%;">
+      <p class="h4" style="font-family:'Arial Black', Gadget, sans-serif;">Product Name is "{{product.Name}}"</p>
+      <p class="h5">Available Quantities are {{product.Quantity}}</p>
+
+    </div>
+
+
+  </div>
+</div>
+
+
+{% endblock %}

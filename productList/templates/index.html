@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Products</title>
+  </head>
+  <body>
+    {% block content %}
+
+    <nav class="navbar navbar-dark bg-dark">
+  <!-- Navbar content -->
+  <h1 class="text-white float-left">Product Listing Page</h1>
+  <h6 class="text-white">Welcome {{usrname}}</h6>
+  <a class="btn btn-primary float-right" href="{% url 'logout' %}" role="button">Logout</a>
+    </nav>
+<div class="container">
+  <div class="jumbotron">
+<!-----Bootstrap card ------->
+<div class="row mx-auto">
+  {% for i in ProductList %}
+  <div class="col-md-4 text-center">
+    <div class="card text-white bg-dark mb-3 mx-auto d-block" style="max-width: 18rem;">
+      <div class="card-header"><h5>Name : {{i.Name}}</h5></div>
+      <div class="card-body">
+        <h6 class="card-title">Quantity : {{i.Quantity}}</h6>
+        <a class="btn btn-primary btn-sm" href="{% url 'ProDetail' %}?data={{i.Id}}" role="button">Know More</a>
+        {% csrf_token  %}
+      </div>
+    </div>
+  </div>
+{% endfor %}
+</div>
+
+<!-----/Bootstrap card ------->
+  </div>
+</div>
+{% endblock %}
+
+  </body>
+</html>
